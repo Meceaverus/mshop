@@ -5,4 +5,13 @@
 Category: {{ category.name }}<br>
 Page: {{ page }}<br>
 
+Продукты:
+{% for product in category.products %}
+    <hr>
+    <a href="{{ path('product_show', {'id': product.id}) }}">
+        {{ product.name }} - {{ product.price|number_format(2, ',', '') }}
+    </a>
+{% endfor %}
+
+<hr>
 <a href="{{ path('category_message') }}">Add to cart</a>
