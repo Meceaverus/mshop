@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Category;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,22 +19,36 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/category/{slug}/{page}",
+     * @Route("/category/{id}/{page}",
      *     name="category_show",
      *     requirements={"page": "\d+"}
      *     )
      *
-     * @param $slug
+     * @param Category $category
      * @param $page
-     * @param $session
      *
      * @return Response
      */
-    public function show($slug, $page = 1, SessionInterface $session, Request $request) {
-        $session->set('lastVisitedCategory', $slug);
-        $param = $request->query->get('param');
+    public function show(Category $category, $page = 1, SessionInterface $session, Request $request) {
+        $session->set('lastVisitedCategory', $category->getId());
 
-        return $this->render('category/show.html.twig', ['slug' => $slug, 'page' => $page, 'param' => $param]);
+        return $this->render('category/show.html.twig', ['category' => $category, 'page' => $page]);
+    }
+
+    /**
+     * @Route("/categories", name="categories_list")
+     */
+    public function listCategories()
+    {
+        $repo = $this->getDoctrine()->getRepository(Category::class);
+
+            $categories = $repo->findAll();
+
+        if ( !$categories ) {
+            throw $this->createNotFoundException('Categories not found');
+        }
+
+        return $this->render('category/list.html.twig', ['categories' => $categories]);
     }
 
     /**
