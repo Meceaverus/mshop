@@ -1,3 +1,11 @@
-{{ product.name }}<br>
-Цена: {{ product.price }}<br><br>
-{{ product.description }}
+{% extends 'base.html.twig' %}
+{% block title %}
+    Продукт - {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+    {{ product.name }} <br>
+    Цена: {{ product.price }} <br><br>
+    {{ product.description }}
+{% endblock %}
