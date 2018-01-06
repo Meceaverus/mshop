@@ -46,4 +46,14 @@ class CategoryController extends Controller
 
         return $this->redirectToRoute('category_show', ['slug' => $lastCategory]);
     }
+
+    /**
+     * @Route("download", name="category_download")
+     */
+    public function fileDownload(){
+        $response = new Response();
+        $response = $this->setContent('Test content');
+
+        return $response;
+    }
 }
