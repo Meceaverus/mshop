@@ -131,4 +131,35 @@ class Category
         return $this;
     }
 
+    /**
+     * @return Category
+     */
+    public function getParent(): ? Category
+    {
+        return $this->parent;
+    }
+    /**
+     * @param Category $parent
+     */
+    public function setParent(Category $parent): void
+    {
+        $this->parent = $parent;
+    }
+    public function getFullName()
+    {
+        $ret = [];
+        if ( $this->parent ) {
+            $parent = $this->parent;
+            while ($parent) {
+                $ret[] = $parent->name;
+                $parent = $parent->parent;
+            }
+        }
+        $ret[] = $this->name;
+        return implode(' / ', $ret);
+    }
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
 }
