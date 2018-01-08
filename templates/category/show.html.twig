@@ -1,23 +1,17 @@
-{% block title %}
-    Категория продуктов
-{% endblock %}
-
 {% for message in app.flashes('notice') %}
     <p>{{ message }}</p>
 {% endfor %}
 
-{% block body %}
-    Category: {{ category.name }}<br>
-    Page: {{ page }}<br>
+Category: {{ category.name }}<br>
+Page: {{ page }}<br>
 
-    Продукты:
-    {% for product in category.products %}
-        <hr>
-        <a href="{{ path('product_show', {'id': product.id}) }}">
-            {{ product.name }} - {{ product.price|number_format(2, ',', '') }}
-        </a>
-    {% endfor %}
-
+Продукты:
+{% for product in category.products %}
     <hr>
-    <a href="{{ path('category_message') }}">Add to cart</a>
-{% endblock %}
+    <a href="{{ path('product_show', {'id': product.id}) }}">
+        {{ product.name }} - {{ product.price|number_format(2, ',', ' ') }}
+    </a>
+{% endfor %}
+
+<hr>
+<a href="{{ path('category_message') }}">Add to cart</a>

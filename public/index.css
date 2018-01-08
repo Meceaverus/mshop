@@ -1,0 +1,4 @@
+.product .price {
+    display: inline-block;
+    float: right;
+}
