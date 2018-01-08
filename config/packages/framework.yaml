@@ -16,7 +16,5 @@ framework:
 
     translator: ~
 
-knp_menu:
-    # use "twig: false" to disable the Twig extension and the TwigRenderer
-    twig:
-        template: menu.html.twig
+    templating:
+        engines: twig
