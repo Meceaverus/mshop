@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5d7794c01b94f46831c3020f6413591",
+    "content-hash": "44b52870ad29c4ce6f6ba2cd42d4a955",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5487,12 +5487,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "5e7ce7371de50673633d79c424ab387e9d9fbaf7"
+                "reference": "5d641eb099db2c1b286ab598cd868d4bb91d224f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/5e7ce7371de50673633d79c424ab387e9d9fbaf7",
-                "reference": "5e7ce7371de50673633d79c424ab387e9d9fbaf7",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/5d641eb099db2c1b286ab598cd868d4bb91d224f",
+                "reference": "5d641eb099db2c1b286ab598cd868d4bb91d224f",
                 "shasum": ""
             },
             "require": {
@@ -5571,7 +5571,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2017-12-25T18:11:15+00:00"
+            "time": "2018-01-08T08:14:45+00:00"
         },
         {
             "name": "zendframework/zend-code",
@@ -5745,7 +5745,8 @@
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
-        "symfony/lts": 20
+        "symfony/lts": 20,
+        "vich/uploader-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
