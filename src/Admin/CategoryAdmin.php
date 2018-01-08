@@ -18,8 +18,8 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            //->add('name')
-            //->add('slug')
+            ->add('name')
+            ->add('slug')
             ->add('parent')
             ;
     }
@@ -27,8 +27,8 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            //->add('name')
-            //->add('slug')
+            ->add('name')
+            ->add('slug')
             ->add('parent')
             ;
     }
@@ -37,8 +37,8 @@ class CategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            //->add('name')
-            //->addIdentifier('slug')
+            ->add('name')
+            ->addIdentifier('slug')
             ->add('parent')
             ;
     }

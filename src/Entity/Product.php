@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
 /**
+ * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product
@@ -17,28 +16,24 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=250)
      */
     private $name;
-
     /**
      * @var string
      *
      * @ORM\Column(type="decimal", scale=2)
      */
     private $price;
-
     /**
      * @var string
      *
      * @ORM\Column(type="text")
      */
     private $description;
-
     /**
      * @var Category
      *
@@ -46,49 +41,42 @@ class Product
      * @ORM\JoinColumn(name="category_id", onDelete="CASCADE")
      */
     private $category;
-
     /**
      * @var bool
      *
      * @ORM\Column(type="boolean", options={"default" : false})
      */
     private $isTop;
-
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="products", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
     private $imageFile;
-
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
      *
      * @var string
      */
     private $imageName;
-
     /**
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
      */
     private $imageSize;
-
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
     private $updatedAt;
-
     public function __construct()
     {
-        $this->isTop - false;
+        $this->isTop = false;
     }
-
     /**
      * @return mixed
      */
@@ -96,9 +84,9 @@ class Product
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
+     *
      * @return Product
      */
     public function setId($id)
@@ -106,7 +94,6 @@ class Product
         $this->id = $id;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -114,9 +101,9 @@ class Product
     {
         return $this->name;
     }
-
     /**
      * @param string $name
+     *
      * @return Product
      */
     public function setName(string $name): Product
@@ -124,7 +111,6 @@ class Product
         $this->name = $name;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -132,9 +118,9 @@ class Product
     {
         return $this->price;
     }
-
     /**
      * @param string $price
+     *
      * @return Product
      */
     public function setPrice(string $price): Product
@@ -142,7 +128,6 @@ class Product
         $this->price = $price;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -150,9 +135,9 @@ class Product
     {
         return $this->description;
     }
-
     /**
      * @param string $description
+     *
      * @return Product
      */
     public function setDescription(string $description): Product
@@ -160,7 +145,6 @@ class Product
         $this->description = $description;
         return $this;
     }
-
     /**
      * @return Category
      */
@@ -168,17 +152,14 @@ class Product
     {
         return $this->category;
     }
-
     /**
      * @param Category $category
-     * @return Product
      */
     public function setCategory(Category $category): Product
     {
         $this->category = $category;
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -186,17 +167,13 @@ class Product
     {
         return $this->isTop;
     }
-
     /**
      * @param bool $isTop
-     * @return Product
      */
-    public function setIsTop(bool $isTop): Product
+    public function setIsTop(bool $isTop): void
     {
         $this->isTop = $isTop;
-        return $this;
     }
-
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
@@ -209,37 +186,34 @@ class Product
     public function setImageFile(?File $image = null): void
     {
         $this->imageFile = $image;
-
         if (null !== $image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
-
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
-
     public function setImageName(?string $imageName): void
     {
         $this->imageName = $imageName;
     }
-
     public function getImageName(): ?string
     {
         return $this->imageName;
     }
-
     public function setImageSize(?int $imageSize): void
     {
         $this->imageSize = $imageSize;
     }
-
     public function getImageSize(): ?int
     {
         return $this->imageSize;
     }
-
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
