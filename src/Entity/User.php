@@ -37,6 +37,14 @@ class User extends BaseUser
      */
     private $lastname;
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->firstName = 'John';
+        $this->lastname = 'Snow';
+    }
+
     /**
      * @return string
      */
