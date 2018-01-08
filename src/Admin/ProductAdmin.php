@@ -13,23 +13,27 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CategoryAdmin extends AbstractAdmin
+class ProductAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            //->add('name')
-            //->add('slug')
-            ->add('parent')
+            ->add('category')
+            ->add('name')
+            ->add('description')
+            ->add('price')
+            ->add('isTop')
             ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            //->add('name')
-            //->add('slug')
-            ->add('parent')
+            ->add('category')
+            ->add('name')
+            ->add('description')
+            ->add('price')
+            ->add('isTop')
             ;
     }
 
@@ -37,9 +41,10 @@ class CategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            //->add('name')
-            //->addIdentifier('slug')
-            ->add('parent')
+            ->add('category')
+            ->add('name')
+            ->addIdentifier('price')
+            ->add('isTop')
             ;
     }
 }
