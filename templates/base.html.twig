@@ -37,6 +37,16 @@
                         <button type="submit" class="btn btn-default">Искать</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
+                        {% if ordersService.currentOrder.items.count %}
+                            <li>
+                                <p class="navbar-test">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span class="badge">{{  ordersService.currentOrder.count }}</span>
+                                    {{ ordersService.currentOrder.amount }} грн.
+                                </p>
+                            </li>
+                        {% endif %}
+
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <li>
                                 <p class="navbar-text">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>

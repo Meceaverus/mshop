@@ -58,7 +58,7 @@ class OrderItem
     /**
      * OrderItem constructor.
      */
-    private function __construct()
+    public function __construct()
     {
         $this->count = 0;
         $this->amount = 0;
@@ -151,6 +151,15 @@ class OrderItem
     public function setAmount(float $amount): OrderItem
     {
         $this->amount = $amount;
+        return $this;
+    }
+
+    public function addCount(float $count): OrderItem
+    {
+        $this->count += $count;
+        $this->setAmount($this->count * $this->product->getPrice());
+        $this->order->recalculateItems();
+
         return $this;
     }
 
