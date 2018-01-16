@@ -27,4 +27,13 @@ class OrderController extends Controller
 
         return $this->redirect($request->headers->get('referer'));
     }
+
+    /**
+     * @Route("cart", name="order_cart_")
+     */
+    public function showCart(Orders $orders)
+    {
+        return $this->render('order/cart.html.twig',
+            ['order' => $orders->getCurrentOrder()]);
+    }
 }
