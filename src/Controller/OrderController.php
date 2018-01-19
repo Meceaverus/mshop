@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
+use App\Entity\OrderItem;
 use App\Entity\Product;
 use App\Service\Orders;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,5 +37,15 @@ class OrderController extends Controller
     {
         return $this->render('order/cart.html.twig',
             ['order' => $orders->getCurrentOrder()]);
+    }
+
+    /**
+     * @Route("cart/remove-item/{id}", name="order_remove_item")
+     * @param OrderItem $item
+     */
+    public function removeItems(OrderItem $item, Orders $orders)
+    {
+        $orders->removeItems($item);
+        return $this->redirectToRoute('order_cart');
     }
 }

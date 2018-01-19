@@ -67,11 +67,24 @@ class Orders
         if (!$existingItem){
             $existingItem = new OrderItem();
             $existingItem->setProduct($product);
-            $order->addItem($existingItem);
+            $order->addItems($existingItem);
             $this->em->persist($existingItem);
         }
 
         $existingItem->addCount($count);
+        $this->em->flush();
+    }
+
+    /**
+     * @param OrderItem $item
+     * @return $this
+     */
+    public function removeItems(OrderItem $item)
+    {
+        $order = $this->getCurrentOrder();
+        $item = $order->getItems();
+        $item->removeElement($item);
+        $order->recalculateItems();
         $this->em->flush();
     }
 
