@@ -31,7 +31,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("cart", name="order_cart_")
+     * @Route("cart", name="order_cart")
      */
     public function showCart(Orders $orders)
     {
