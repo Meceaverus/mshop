@@ -8,33 +8,8 @@
     <div class="container-fluid">
         <h2>Заказ</h2>
 
-        <table class="table table-striped">
-            <tr>
-                <th>Товар</th>
-                <th>Цена</th>
-                <th>Колличество</th>
-                <th>Стоимость</th>
-            </tr>
+        {% include 'order/items.html.twig' with{'order': order} %}
 
-            {#@var App\Entity\OrderItem #}
-            {% for item in order.items %}
-                <tr>
-                    <td>{{ item.product.name }}</td>
-                    <td>{{ item.product.price }}</td>
-                    <td>{{ item.count }}</td>
-                    <td>{{ item.amount }}</td>
-                    <td><a href="{{ path('order_remove_item', {'id': item.id}) }}">
-                            <span class="glyphicon glyphicon-remove"></span></a></td>
-                </tr>
-            {% endfor %}
-
-            <tr>
-                <td colspan="2">
-                    Всего
-                </td>
-                <td>{{ order.count }}</td>
-                <td>{{ order.amount }}</td>
-            </tr>
-        </table>
+        <a href="{{ path('order_complete') }}">Оформить заказ</a>
     </div>
 {% endblock %}
