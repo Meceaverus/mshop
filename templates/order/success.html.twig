@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ваш заказ №{{ order.id }} принят в обработку. Проверьте почту и ждите звонка.</h1>
+    <div class="container">
+        {% for orderId in app.flashes('last_order') %}
+            <h1>Ваш заказ №{{ order.id }} принят в обработку. Проверьте почту и ждите звонка.</h1>
+        {% endblock %}
+
+
+        <a href="{{ path('homepage') }}">На главную</a>
+    </div>
 {% endblock %}
