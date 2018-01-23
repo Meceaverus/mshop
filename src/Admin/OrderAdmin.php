@@ -26,7 +26,7 @@ class OrderAdmin extends AbstractAdmin
             ->add('customerName')
             ->add('phone')
             ->add('email')
-            ->add('addres')
+            ->add('adress')
             ->add('status')
             ->add('isPaid');
     }
@@ -41,7 +41,7 @@ class OrderAdmin extends AbstractAdmin
             ->add('customerName')
             ->add('phone')
             ->add('email')
-            ->add('addres')
+            ->add('adress')
             ->add('status')
             ->add('isPaid');
     }
@@ -56,7 +56,7 @@ class OrderAdmin extends AbstractAdmin
             ->add('customerName')
             ->add('phone')
             ->add('email')
-            ->add('addres')
+            ->add('adress')
             ->add('status')
             ->add('isPaid');
     }
