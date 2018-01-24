@@ -9,6 +9,7 @@ security:
 
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -28,3 +29,4 @@ security:
 
     access_control:
         - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
